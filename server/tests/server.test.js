@@ -24,21 +24,27 @@ const todos = [{
 ]
 
 beforeEach(done => {
-  Todo.remove({}).then(() => {
-    return Todo.insertMany(todos)
-  }).then(() => done())
+  Todo.remove({})
+    .then(() => {
+      return Todo.insertMany(todos)
+    })
+    .then(() => done())
 })
 
 describe('POST /todos', () => {
   it('should create a new todo', done => {
     var text = 'Test todo text'
 
-    request(app).post('/todos').send({
+    request(app)
+      .post('/todos')
+      .send({
         text
-      }).expect(200)
+      })
+      .expect(200)
       .expect(res => {
         expect(res.body.text).toBe(text)
-      }).end((err, res) => {
+      })
+      .end((err, res) => {
         if (err) {
           return done(err)
         }

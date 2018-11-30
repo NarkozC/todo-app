@@ -1,33 +1,38 @@
 {
-  "name": "node-todo-api",
+  "name": "n-7-9-deleting-documents",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "dependencies": {
+    "bcryptjs": "^2.3.0",
+    "body-parser": "^1.15.2",
+    "crypto-js": "^3.1.6",
+    "express": "^4.14.0",
+    "jsonwebtoken": "^7.1.9",
+    "lodash": "^4.15.0",
+    "mongodb": "^2.2.5",
+    "mongoose": "^4.5.9",
+    "validator": "^5.6.0"
+  },
+  "devDependencies": {
+    "expect": "^1.20.2",
+    "mocha": "^3.0.2",
+    "nodemon": "^1.10.2",
+    "supertest": "^2.0.0"
+  },
   "scripts": {
     "start": "node server/server.js",
-    "test": "export NODE_ENV=test || SET \"NODE_ENV=test\" && mocha server/**/*.test.js",
-    "test-watch": "nodemon --exec npm run test"
+    "test": "SET \"NODE_ENV=test\" && mocha server/**/*.test.js",
+    "test-watch": "nodemon --exec npm test"
   },
-  "engines": {
-    "node": "10.13.0"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NarkozC/todo-app.git"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.18.3",
-    "crypto-js": "^3.1.9-1",
-    "express": "^4.16.4",
-    "jsonwebtoken": "^8.4.0",
-    "lodash": "^4.17.11",
-    "mongodb": "^2.2.5",
-    "mongoose": "^5.3.14",
-    "validator": "^10.9.0"
+  "bugs": {
+    "url": "https://github.com/NarkozC/todo-app/issues"
   },
-  "devDependencies": {
-    "expect": "^23.6.0",
-    "mocha": "^5.2.0",
-    "nodemon": "^1.18.7",
-    "supertest": "^3.3.0"
-  }
+  "homepage": "https://github.com/NarkozC/todo-app#readme"
 }
