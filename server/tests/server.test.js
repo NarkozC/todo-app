@@ -140,7 +140,7 @@ describe('DELETE /todos/:id', () => {
         }
 
         Todo.findById(hexId).then(todo => {
-          expect(todo).toEqual(null)
+          expect(todo).toBeFalsy()
           done()
         }).catch(e => done(e))
       })
@@ -274,6 +274,7 @@ describe('POST /users', () => {
       .expect(200)
       .expect(res => {
         expect(res.headers['x-auth']).toBeTruthy()
+        expect(res.body._id).toBeTruthy()
         expect(res.body.email).toBe(email)
       })
       .end(err => {
@@ -285,7 +286,7 @@ describe('POST /users', () => {
           email
         }).then(user => {
           expect(user).toBeTruthy()
-          expect(user.password).toNotBe(password)
+          expect(user.password).not.toBe(password)
           done()
         }).catch(done)
       })
@@ -336,7 +337,7 @@ describe('POST /users/login', () => {
         }
 
         User.findById(users[1]._id).then(user => {
-          expect(user.tokens[1]).toInclude({
+          expect(user.toObject().tokens[1]).toMatchObject({
             access: 'auth',
             token: res.headers['x-auth']
           })
